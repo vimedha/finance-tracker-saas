@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google"; // ✅ Using a valid Google Font
 import "./globals.css";
-import { ClerkProvider } from '@clerk/nextjs';
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { ClerkProvider } from "@clerk/nextjs";
+import { QueryProvider } from "@/providers/query-provider"; // ✅ Ensure this has a named export
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -19,18 +16,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <ClerkProvider>
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+      <html lang="en">
+        <body className={`${inter.variable} antialiased`}>
+          <QueryProvider>{children}</QueryProvider>
+        </body>
+      </html>
     </ClerkProvider>
   );
 }
