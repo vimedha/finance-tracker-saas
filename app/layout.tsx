@@ -3,7 +3,8 @@ import { Inter } from "next/font/google"; // ✅ Using a valid Google Font
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { QueryProvider } from "@/providers/query-provider"; // ✅ Ensure this has a named export
-
+import { SheetProvider } from "@/providers/sheet-provider";
+import {Toaster} from "@/components/ui/sonner";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -23,7 +24,10 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${inter.variable} antialiased`}>
-          <QueryProvider>{children}</QueryProvider>
+          <QueryProvider>
+            <SheetProvider/>
+            <Toaster/>
+            {children}</QueryProvider>
         </body>
       </html>
     </ClerkProvider>
