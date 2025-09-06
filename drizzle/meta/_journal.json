@@ -22,6 +22,20 @@
       "when": 1755957405407,
       "tag": "0002_low_stepford_cuckoos",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1757148289485,
+      "tag": "0003_overconfident_slipstream",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1757148309072,
+      "tag": "0004_little_vanisher",
+      "breakpoints": true
     }
   ]
 }
