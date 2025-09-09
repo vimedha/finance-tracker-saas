@@ -1,10 +1,10 @@
 "use client";
 import {useMedia} from "react-use";
 import { usePathname ,useRouter} from "next/navigation";
-import {NavButton } from "@/components/ui/nav-button";
+import {NavButton } from "@/components/nav-button";
 import {useState} from "react";  
 import {Button} from "@/components/ui/button"; 
-import { Sheet,SheetContent, SheetTrigger } from "./sheet";
+import { Sheet,SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Menu } from "lucide-react";

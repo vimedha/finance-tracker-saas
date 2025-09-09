@@ -9,7 +9,7 @@ import{
 import { useNewAccount } from "@/features/accounts/hooks/use-new-account";
 import { Loader2, Plus } from "lucide-react";
 import { columns} from "./columns";
-import { DataTable } from "@/components/ui/data-table";
+import { DataTable } from "@/components/data-table";
 import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
 import { Skeleton } from "@/components/ui/skeleton";
 import Loadable from "next/dist/shared/lib/loadable.shared-runtime";

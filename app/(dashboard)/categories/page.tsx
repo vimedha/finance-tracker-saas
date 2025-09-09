@@ -9,7 +9,7 @@ import{
 import { useNewCategory } from "@/features/categories/hooks/use-new-category";
 import { Loader2, Plus } from "lucide-react";
 import { columns} from "./columns";
-import { DataTable } from "@/components/ui/data-table";
+import { DataTable } from "@/components/data-table";
 import { useGetCategories } from "@/features/categories/api/use-get-categories";
 import { Skeleton } from "@/components/ui/skeleton";
 import Loadable from "next/dist/shared/lib/loadable.shared-runtime";

@@ -6,10 +6,10 @@ import{
         CardHeader,
         CardTitle,
 } from "@/components/ui/card";
-import { useNewAccount } from "@/features/accounts/hooks/use-new-account";
+import { useNewTransaction } from "@/features/transactions/hooks/use-new-transaction";
 import { Loader2, Plus } from "lucide-react";
 import { columns} from "./columns";
-import { DataTable } from "@/components/ui/data-table";
+import { DataTable } from "@/components/data-table";
 import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
 import { Skeleton } from "@/components/ui/skeleton";
 import Loadable from "next/dist/shared/lib/loadable.shared-runtime";
@@ -18,7 +18,7 @@ import { useBulkDeleteAccounts } from "@/features/accounts/api/use-bulk-delete-a
 
 
 const TransactionsPage = ()=>{
-        const newAccount = useNewAccount();
+        const newTransaction= useNewTransaction();
         const deleteAccounts = useBulkDeleteAccounts();
         const accountsQuery=useGetAccounts();
         const accounts= accountsQuery.data || [];
@@ -49,7 +49,7 @@ const TransactionsPage = ()=>{
     <CardTitle className="text-xl line-clamp-1 text-center w-full">
       Transactions History
     </CardTitle>
-    <Button onClick={newAccount.onOpen} className="w-full sm:w-auto">
+    <Button onClick={newTransaction.onOpen} className="w-full sm:w-auto">
         <Plus className="size-4 mr-2"/>
       Add new
     </Button>
