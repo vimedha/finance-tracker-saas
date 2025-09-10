@@ -10,22 +10,22 @@ import { useNewTransaction } from "@/features/transactions/hooks/use-new-transac
 import { Loader2, Plus } from "lucide-react";
 import { columns} from "./columns";
 import { DataTable } from "@/components/data-table";
-import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
 import { Skeleton } from "@/components/ui/skeleton";
 import Loadable from "next/dist/shared/lib/loadable.shared-runtime";
-import { useBulkDeleteAccounts } from "@/features/accounts/api/use-bulk-delete-accounts";
-
+import { useBulkCreateTransactions } from "@/features/transactions/api/use-bulk-create-transactions";
+import { useBulkDeleteTransactions } from "@/features/transactions/api/use-bulk-delete-transactions";
+import { useGetTransactions } from "@/features/transactions/api/use-get-transactions";
 
 
 const TransactionsPage = ()=>{
         const newTransaction= useNewTransaction();
-        const deleteAccounts = useBulkDeleteAccounts();
-        const accountsQuery=useGetAccounts();
-        const accounts= accountsQuery.data || [];
+        const deleteTransactions = useBulkDeleteTransactions();
+        const transactionsQuery=useGetTransactions();
+        const transactions= transactionsQuery.data || [];
         const isDisabled=
-        accountsQuery.isLoading ||
-        deleteAccounts.isPending;
-        if(accountsQuery.isLoading){
+        transactionsQuery.isLoading ||
+        deleteTransactions.isPending;
+        if(transactionsQuery.isLoading){
           return(
             <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
               <Card className="border-none drop-shadow-sm">
@@ -58,10 +58,10 @@ const TransactionsPage = ()=>{
         <DataTable 
         filterKey="name" 
         columns={columns} 
-        data={accounts}
+        data={transactions}
         onDelete={(row)=>{
           const ids= row.map((r)=> r.original.id);
-          deleteAccounts.mutate({ids});
+          deleteTransactions.mutate({ids});
         }}
         disabled={isDisabled} /> 
         </CardContent>
