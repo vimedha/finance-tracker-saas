@@ -15,9 +15,21 @@ import Loadable from "next/dist/shared/lib/loadable.shared-runtime";
 import { useBulkCreateTransactions } from "@/features/transactions/api/use-bulk-create-transactions";
 import { useBulkDeleteTransactions } from "@/features/transactions/api/use-bulk-delete-transactions";
 import { useGetTransactions } from "@/features/transactions/api/use-get-transactions";
+import { useState } from "react";
+import { UploadButton } from "./upload-button";
 
+enum VARIANTS{
+  LIST="LIST",
+  IMPORT="IMPORT"
+};
+const INITIAL_IMPORT_RESULTS={
+  data:[],
+  errors:[],
+  meta:{},
+};
 
 const TransactionsPage = ()=>{
+  const [variant, setVariant]=useState<VARIANTS>(VARIANTS.LIST);
         const newTransaction= useNewTransaction();
         const deleteTransactions = useBulkDeleteTransactions();
         const transactionsQuery=useGetTransactions();
@@ -40,23 +52,38 @@ const TransactionsPage = ()=>{
                 
               </Card>
               </div>
-          )
+          );
         }
+
+if (variant=== VARIANTS.IMPORT){
+  return(
+    <>
+    <div>
+      This is a screen for import
+    </div>
+    </>
+  );
+}
         return (
-                <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
-<Card className="border-none drop-shadow-sm">
-  <CardHeader className="flex flex-col items-center gap-y-2 lg:flex-row lg:items-center lg:justify-between">
-    <CardTitle className="text-xl line-clamp-1 text-center w-full">
-      Transactions History
-    </CardTitle>
-    <Button onClick={newTransaction.onOpen} className="w-full sm:w-auto">
-        <Plus className="size-4 mr-2"/>
-      Add new
-    </Button>
-  </CardHeader>
-  <CardContent>
-        <DataTable 
-        filterKey="date" 
+<div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
+  <Card className="border-none drop-shadow-sm">
+    <CardHeader className="gap-y-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-y-2">
+        <CardTitle className="text-xl line-clamp-1">
+          Transaction History
+        </CardTitle>
+        <div className="flex items-center gap-x-2">
+          <Button onClick={newTransaction.onOpen} size="sm">
+            <Plus className="size-4 mr-2"/>
+            Add new
+          </Button>
+          <UploadButton onUpload={()=>{}}/>
+        </div>
+      </div>
+    </CardHeader>
+    <CardContent>
+      <DataTable 
+        filterKey="payee" 
         columns={columns} 
         data={transactions}
         onDelete={(row)=>{
@@ -64,10 +91,9 @@ const TransactionsPage = ()=>{
           deleteTransactions.mutate({ids});
         }}
         disabled={isDisabled} /> 
-        </CardContent>
-</Card>
-
-                </div>
+    </CardContent>
+  </Card>
+</div>
         );
 };
 
