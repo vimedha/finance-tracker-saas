@@ -19,6 +19,7 @@ import { useDeleteTransaction } from "@/features/transactions/api/use-delete-tra
 import Loadable from "next/dist/shared/lib/loadable.shared-runtime";
 import { Loader2 } from "lucide-react";
 import { use } from "react";
+
 import { TransactionForm } from "@/features/transactions/components/transaction-form";
 import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
 const formSchema = insertTransactionSchema.omit({
@@ -86,7 +87,7 @@ export const EditTransactionSheet = () => {
         const defaultValues=transactionQuery.data?{
                 accountId: transactionQuery.data.accountId,
                 categoryId:transactionQuery.data.categoryId,
-                amount: transactionQuery.data.amount.toString(),
+                amount: convertAmountFromMiliunits(transactionQuery.data.amount).toString(),
                 date: transactionQuery.data.date
                 ? new Date(transactionQuery.data.date)
                 : new Date(),
@@ -122,7 +123,6 @@ export const EditTransactionSheet = () => {
                 <TransactionForm
                 id={id} 
                 defaultValues={defaultValues}
-
                 onSubmit={onSubmit}
                 onDelete={onDelete}
                 disabled={isPending}
@@ -137,3 +137,8 @@ export const EditTransactionSheet = () => {
                 </>
         )
 }
+export function convertAmountFromMiliunits(amount: number) {
+  return amount / 1000;
+}
+
+

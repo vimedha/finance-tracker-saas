@@ -33,8 +33,7 @@ export const DatePicker = ({
           )}
         >
           <CalendarIcon className="size-4 mr-2" />
-          {value ? format(value, "PPP") : <span>Pick a date</span>}
-        </Button>
+{value && !isNaN(value.getTime()) ? format(value, "PPP") : <span>Pick a date</span>}        </Button>
       </PopoverTrigger>
       <PopoverContent>
         <Calendar
