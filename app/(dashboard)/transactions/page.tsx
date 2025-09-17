@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import{
         Card,
@@ -32,7 +33,7 @@ const INITIAL_IMPORT_RESULTS={
   meta:{},
 };
 
-const TransactionsPage = ()=>{
+const TransactionsPageContent = ()=>{
   const [AccountDialog,confirm]=useSelectAccount();
   const [variant, setVariant]=useState<VARIANTS>(VARIANTS.LIST);
   const [importResults,setImportResults]=useState(INITIAL_IMPORT_RESULTS);
@@ -134,6 +135,14 @@ if (variant=== VARIANTS.IMPORT){
   </Card>
 </div>
         );
+};
+
+const TransactionsPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <TransactionsPageContent />
+    </Suspense>
+  );
 };
 
 export default TransactionsPage;
