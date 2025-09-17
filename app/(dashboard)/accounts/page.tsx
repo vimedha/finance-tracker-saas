@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import{
         Card,
@@ -15,9 +16,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import Loadable from "next/dist/shared/lib/loadable.shared-runtime";
 import { useBulkDeleteAccounts } from "@/features/accounts/api/use-bulk-delete-accounts";
 
-
-
-const AccountsPage = ()=>{
+const AccountsPageContent = ()=>{
         const newAccount = useNewAccount();
         const deleteAccounts = useBulkDeleteAccounts();
         const accountsQuery=useGetAccounts();
@@ -69,6 +68,14 @@ const AccountsPage = ()=>{
 
                 </div>
         );
+};
+
+const AccountsPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AccountsPageContent />
+    </Suspense>
+  );
 };
 
 export default AccountsPage;
