@@ -2,7 +2,7 @@ import {IconType} from "react-icons";
 import { VariantProps,cva } from "class-variance-authority";
 import {cn, formatCurrency, formatPercentage} from "@/lib/utils";
 import {CountUp} from "@/components/count-up";
-import { Skeleton } from "./ui/skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
 import{
         Card,
         CardContent,
@@ -81,14 +81,14 @@ export const DataCard=({
                         </CardHeader>
                         <CardContent>
                                 <h1 className="font-bold text-2xl mb-2 line-clamp-1 break-all">
-                                        <CountUp
-                                        preserveValue
-                                        start={0}
-                                        end={value}
-                                        decimals={2}
-                                        decimalPlaces={2}
-                                        formattingFn={formatCurrency}
-                                        />
+                                       <CountUp
+preserveValue
+start={0}
+end={value || 0}
+decimals={2}
+decimalPlaces={2}
+formattingFn={formatCurrency}
+/>
                                 </h1>
                                 <p className={cn(
                                         "text-muted-foreground text-sm line-clamp-1",
