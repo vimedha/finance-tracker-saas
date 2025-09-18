@@ -1,11 +1,10 @@
 import { Select,SelectTrigger,SelectContent,SelectValue,SelectItem } from "./ui/select";
 import {Card,CardContent, CardHeader,CardTitle}from "@/components/ui/card";
 import {  FileSearch, Loader2, PieChart,Radar,Target} from "lucide-react";
-import { AreaVariant } from "./area-variant";
-import { BarVariant } from "@/components/bar-variant";
+
 
 import { useState } from "react";
-import { RadarChart } from "recharts";
+
 import { PieVariant } from "@/components/pie-variant";
 import { RadarVariant } from "@/components/radar-variant";
 import { RadialVariant } from "@/components/radial-variant";

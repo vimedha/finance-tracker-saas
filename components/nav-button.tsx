@@ -1,12 +1,7 @@
 import {Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link  from "next/link";
-import {useMedia} from "react-use";
-import {
-       Sheet,
-       SheetContent,
-       SheetTrigger, 
-} from "@/components/ui/sheet"
+
 type Props ={
         href: string;
         label: string;

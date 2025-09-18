@@ -13,9 +13,9 @@ import { useOpenCategory } from "@/features/categories/hooks/use-open-category";
 import { useGetCategory } from "@/features/categories/api/use-get-category";
 import { useEditCategory } from "@/features/categories/api/use-edit-category";
 import { useDeleteCategory } from "@/features/categories/api/use-delete-category";
-import Loadable from "next/dist/shared/lib/loadable.shared-runtime";
+
 import { Loader2 } from "lucide-react";
-import { use } from "react";
+
 const formSchema = insertCategorySchema.pick({
         name:true,
 });
