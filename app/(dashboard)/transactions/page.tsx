@@ -12,6 +12,7 @@ import { columns} from "./columns";
 import { DataTable } from "@/components/data-table";
 import { Skeleton } from "@/components/ui/skeleton";
 
+
 import { useBulkCreateTransactions } from "@/features/transactions/api/use-bulk-create-transactions";
 import { useBulkDeleteTransactions } from "@/features/transactions/api/use-bulk-delete-transactions";
 import { useGetTransactions } from "@/features/transactions/api/use-get-transactions";
@@ -22,15 +23,18 @@ import {transactions as transactionSchema} from "@/db/schema";
 import { useSelectAccount } from "@/features/accounts/hooks/use-select-account";
 import { toast } from "sonner";
 
+
 enum VARIANTS{
   LIST="LIST",
   IMPORT="IMPORT"
 };
-const INITIAL_IMPORT_RESULTS={
-  data:[],
-  errors:[],
-  meta:{},
+// Explicitly typed to match react-papaparse output and resolve type mismatches
+const INITIAL_IMPORT_RESULTS: { data: string[][]; errors: Array<{ row: number; message: string }>; meta: Record<string, unknown> } = {
+  data: [],
+  errors: [],
+  meta: {},
 };
+
 
 const TransactionsPage = ()=>{
   const [AccountDialog,confirm]=useSelectAccount();
@@ -53,6 +57,7 @@ const TransactionsPage = ()=>{
         const isDisabled=
         transactionsQuery.isLoading ||
         deleteTransactions.isPending;
+
 
         const onSubmitImport=async(
           values:typeof transactionSchema.$inferInsert[],
@@ -88,6 +93,7 @@ const TransactionsPage = ()=>{
               </div>
           );
         }
+
 
 if (variant=== VARIANTS.IMPORT){
   return(
@@ -135,5 +141,6 @@ if (variant=== VARIANTS.IMPORT){
 </div>
         );
 };
+
 
 export default TransactionsPage;

@@ -1,3 +1,4 @@
+"use client"
 import { Select,SelectTrigger,SelectContent,SelectValue,SelectItem } from "./ui/select";
 import {Card,CardContent, CardHeader,CardTitle}from "@/components/ui/card";
 import { AreaChart,  BarChart3, FileSearch, LineChart, Loader2 } from "lucide-react";
