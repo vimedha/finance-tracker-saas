@@ -5,7 +5,6 @@ import {FaPiggyBank} from "react-icons/fa";
 import {FaArrowTrendUp,FaArrowTrendDown} from "react-icons/fa6";
 import { DataCard, DataCardLoading } from "@/components/data-card";
 import { useGetSummary } from "@/features/summary/api/use-get-summary";
-import { CountUp } from "@/components/count-up"; // or wherever your count-up.tsx is located // ADD THIS IMPORT
 
 export const DataGrid=()=>{
         const params =useSearchParams();

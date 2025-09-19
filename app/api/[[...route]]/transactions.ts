@@ -7,7 +7,6 @@ import {clerkMiddleware , getAuth} from "@hono/clerk-auth";
 import {zValidator} from "@hono/zod-validator";
 import {createId} from "@paralleldrive/cuid2";
 import {z} from "zod";
-import { ca } from "zod/v4/locales";
 
 const app = new Hono()
 .get("/", 

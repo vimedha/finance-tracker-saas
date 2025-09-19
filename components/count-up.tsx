@@ -2,7 +2,13 @@
 import { useEffect, useState } from "react";
 import CountUpLib from "react-countup";
 
-const CountUp = (props: any) => {
+interface CountUpProps {
+  end: number;
+  formattingFn?: (value: number) => string;
+  [key: string]: unknown;
+}
+
+const CountUp = (props: CountUpProps) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {

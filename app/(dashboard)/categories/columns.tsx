@@ -1,4 +1,4 @@
-"use client";
+
 import { client } from "@/lib/hono";
 import { InferResponseType } from "hono";
 import { Checkbox } from "@/components/ui/checkbox";

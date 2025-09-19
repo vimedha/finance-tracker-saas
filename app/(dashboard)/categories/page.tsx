@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import{
         Card,
@@ -12,12 +13,11 @@ import { columns} from "./columns";
 import { DataTable } from "@/components/data-table";
 import { useGetCategories } from "@/features/categories/api/use-get-categories";
 import { Skeleton } from "@/components/ui/skeleton";
-import Loadable from "next/dist/shared/lib/loadable.shared-runtime";
 import { useBulkDeleteCategories } from "@/features/categories/api/use-bulk-delete-categories";
 
 
 
-const CategoriesPage = ()=>{
+const CategoriesPageContent = ()=>{
         const newCategory = useNewCategory();
         const deleteCategories = useBulkDeleteCategories();
         const categoriesQuery=useGetCategories();
@@ -69,6 +69,14 @@ const CategoriesPage = ()=>{
 
                 </div>
         );
+};
+
+const CategoriesPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <CategoriesPageContent />
+    </Suspense>
+  );
 };
 
 export default CategoriesPage;

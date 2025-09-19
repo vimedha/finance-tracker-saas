@@ -4,7 +4,11 @@ import { useCSVReader } from "react-papaparse";
 import { Button } from "@/components/ui/button";
 
 type Props = {
-        onUpload: (results: any) => void;
+        onUpload: (results: {
+                data: string[][];
+                errors: unknown[];
+                meta: unknown;
+        }) => void;
 };
 
 export const UploadButton = ({ onUpload }: Props) => {
@@ -13,7 +17,7 @@ export const UploadButton = ({ onUpload }: Props) => {
         return (
                 <div className="w-full lg:w-auto">
   <CSVReader onUploadAccepted={onUpload}>
-    {({ getRootProps }: any) => (
+    {({ getRootProps }: { getRootProps: () => Record<string, unknown> }) => (
       <Button 
         size="sm"
         className="w-full lg:w-auto"

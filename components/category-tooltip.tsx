@@ -1,9 +1,18 @@
-import {format} from "date-fns";
 import { formatCurrency } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 
-export const CategroyTooltip=({active,payload}:any)=>{
-        if(!active)return null;
+interface TooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    payload: {
+      name: string;
+    };
+    value: number;
+  }>;
+}
+
+export const CategroyTooltip=({active,payload}:TooltipProps)=>{
+        if(!active || !payload || payload.length === 0)return null;
         const name=payload[0].payload.name;
         const value=payload[0].value;
         

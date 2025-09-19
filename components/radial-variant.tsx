@@ -2,7 +2,6 @@ import{
         RadialBar,
         RadialBarChart,
         Legend,
-        
         ResponsiveContainer,
         Tooltip
 }from "recharts";
@@ -37,11 +36,11 @@ export const RadialVariant=({data}:Props)=>{
                         dataKey="value"
                         />  
                                 <Legend
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   content={({ payload }: any) => {
-    const total = data.reduce((sum, item) => sum + item.value, 0);
     return (
       <ul className="flex flex-col space-y-2">
-        {payload.map((entry: any, index: number) => {
+        {payload?.map((entry: any, index: number) => { // eslint-disable-line @typescript-eslint/no-explicit-any
           return (
             <li 
               key={`item-${index}`}

@@ -26,7 +26,14 @@ interface SelectedColumnsState{
 type Props={
         data:string[][];
         onCancel: ()=>void;
-        onSubmit: (data:any)=> void;
+        onSubmit: (data: Array<{
+                amount: number;
+                date: string;
+                payee: string;
+                notes?: string;
+                categoryId?: string;
+                accountId?: string;
+        }>)=> void;
 };
 
 export const ImportCard=(
@@ -83,10 +90,10 @@ export const ImportCard=(
                         console.log("Mapped data:", mappedDate); // Debug log
                        
                        const arrayOfData=mappedDate.body.map((row)=>{
-                                return row.reduce((acc:any,cell,index)=>{
+                                return row.reduce((acc: Record<string, string>,cell,index)=>{
                                         const header=mappedDate.headers[index];
                                         if(header!==null){
-                                                acc[header]=cell;
+                                                acc[header]=cell || '';
                                         }
                                         return acc;
                                 },{});
@@ -105,12 +112,15 @@ export const ImportCard=(
                             }
 
                             return {
-                              ...item,
-                              amount: convertAmountToMiliunits(parseFloat(item.amount)),
+                              amount: convertAmountToMiliunits(parseFloat(item.amount || '0')),
                               date: format(parsedDate, outputFormat),
+                              payee: item.payee || '',
+                              notes: item.notes || '',
+                              categoryId: item.categoryId || undefined,
+                              accountId: item.accountId || undefined,
                             };
                           })
-                          .filter(Boolean); // removes nulls
+                          .filter((item): item is NonNullable<typeof item> => item !== null); // removes nulls with proper type guard
 
                         console.log("Formatted data:", formattedData); // Debug log
                         onSubmit(formattedData);
