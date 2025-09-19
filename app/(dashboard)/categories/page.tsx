@@ -13,10 +13,16 @@ import { columns} from "./columns";
 import { DataTable } from "@/components/data-table";
 import { useGetCategories } from "@/features/categories/api/use-get-categories";
 import { Skeleton } from "@/components/ui/skeleton";
+<<<<<<< HEAD
 import { useBulkDeleteCategories } from "@/features/categories/api/use-bulk-delete-categories";
 
 
 
+=======
+
+import { useBulkDeleteCategories } from "@/features/categories/api/use-bulk-delete-categories";
+
+>>>>>>> e6f2f87244a51c1d1a44ec697a6d2203f5c9652a
 const CategoriesPageContent = ()=>{
         const newCategory = useNewCategory();
         const deleteCategories = useBulkDeleteCategories();

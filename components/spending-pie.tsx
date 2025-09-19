@@ -1,7 +1,15 @@
+"use client";
 import { Select,SelectTrigger,SelectContent,SelectValue,SelectItem } from "./ui/select";
 import {Card,CardContent, CardHeader,CardTitle}from "@/components/ui/card";
 import {  FileSearch, Loader2, PieChart,Radar,Target} from "lucide-react";
+<<<<<<< HEAD
 import { useState } from "react";
+=======
+
+
+import { useState } from "react";
+
+>>>>>>> e6f2f87244a51c1d1a44ec697a6d2203f5c9652a
 import { PieVariant } from "@/components/pie-variant";
 import { RadarVariant } from "@/components/radar-variant";
 import { RadialVariant } from "@/components/radial-variant";

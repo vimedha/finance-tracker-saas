@@ -1,6 +1,10 @@
 import {Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link  from "next/link";
+<<<<<<< HEAD
+=======
+
+>>>>>>> e6f2f87244a51c1d1a44ec697a6d2203f5c9652a
 type Props ={
         href: string;
         label: string;

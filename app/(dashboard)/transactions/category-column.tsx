@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> e6f2f87244a51c1d1a44ec697a6d2203f5c9652a
 import { useOpenCategory } from "@/features/categories/hooks/use-open-category";
 import { useOpenTransaction } from "@/features/transactions/hooks/use-open-transaction";
 import {cn}from "@/lib/utils";

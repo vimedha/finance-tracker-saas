@@ -2,7 +2,11 @@
 import { HeaderLogo } from "@/components/header-logo"
 import { Navigation } from "@/components/navigation"
 import { UserButton, ClerkLoaded, ClerkLoading } from "@clerk/nextjs"
+<<<<<<< HEAD
 import { Loader2 } from "lucide-react"
+=======
+import {  Loader2 } from "lucide-react"
+>>>>>>> e6f2f87244a51c1d1a44ec697a6d2203f5c9652a
 import { WelcomeMsg } from "@/components/welcome-msg"
 import { Filters } from "@/components/filters"
 export const Header = () => {

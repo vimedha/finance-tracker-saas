@@ -1,6 +1,11 @@
+"use client"
 import { Select,SelectTrigger,SelectContent,SelectValue,SelectItem } from "./ui/select";
 import {Card,CardContent, CardHeader,CardTitle}from "@/components/ui/card";
+<<<<<<< HEAD
 import { AreaChart, BarChart3, FileSearch, LineChart, Loader2 } from "lucide-react";
+=======
+import { AreaChart,  BarChart3, FileSearch, LineChart, Loader2 } from "lucide-react";
+>>>>>>> e6f2f87244a51c1d1a44ec697a6d2203f5c9652a
 import { AreaVariant } from "./area-variant";
 import { BarVariant } from "@/components/bar-variant";
 import { LineVariant } from "./line-variant";

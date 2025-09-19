@@ -4,7 +4,11 @@ import {useState} from "react";
 import {format,subDays} from "date-fns";
 import { DateRange } from "react-day-picker";
 import { ChevronDown}from "lucide-react";
+<<<<<<< HEAD
 import {formatDateRange} from "@/lib/utils";
+=======
+import { formatDateRange} from "@/lib/utils";
+>>>>>>> e6f2f87244a51c1d1a44ec697a6d2203f5c9652a
 import {Button} from "@/components/ui/button";
 import {Calendar} from "@/components/ui/calendar";
 import {
@@ -12,6 +16,10 @@ import {
   usePathname,
   useSearchParams
 } from "next/navigation";
+<<<<<<< HEAD
+=======
+
+>>>>>>> e6f2f87244a51c1d1a44ec697a6d2203f5c9652a
 import {
         Popover,
         PopoverContent,
@@ -85,7 +93,7 @@ export const DateFilter = () => {
         <div className="max-w-fit">
           <Calendar
             disabled={false}
-            initialFocus
+            autoFocus
             mode="range"
             defaultMonth={date?.from}
             selected={date}
